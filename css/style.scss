@@ -59,8 +59,8 @@ $breakpoint-medium: "only screen and (max-width: 1100px)";
     transition-duration:         $duration;
 }
 
-$desktop-width: 640px;
-@mixin tablet {
+$desktop-width: 768px;
+@mixin small-screen {
   @media (max-width: #{$desktop-width}) {
     @content;
   }
@@ -124,7 +124,7 @@ img {
 .wrapper {      
     width: 1100px;
     max-width: $grid-max-width;
-    @include tablet {
+    @include small-screen {
         width: 90%; 
       }
     }
@@ -135,7 +135,11 @@ img {
         }           
     }   
 
-
+@include small-screen {
+  .mobile-hidden {
+    display: none;
+  }
+}
 
 
 /*----------------------------
@@ -204,6 +208,18 @@ Button
     height: 100%;
     background: $lightgrey;
   }
+  &:hover {
+    background:darken($menu-background,10%);
+    color:$link-hover;
+    @include transition-duration(0.5s);
+    border: 1px solid $blue;
+    &::before {
+      color:$link-hover;
+    }
+    &::after {
+      background: $blue;
+    }
+  }
 }
 
 
@@ -222,7 +238,7 @@ header {
   z-index: 100;
   padding-top: 40px;
   width: 100%;
-  @include tablet {
+  @include small-screen {
     padding-top: 15px;
   }
 }
@@ -235,7 +251,7 @@ a.logo {
   @include svg-bg('logo');
   float: left;
   margin-top: 15px;
-  @include tablet {
+  @include small-screen {
     margin-top: 15px;
     width: 148px;
     height: 40px;
@@ -252,7 +268,7 @@ NAVIGATION STYLES
 ----------------------------*/
 nav {
   width:100%;
-  @include tablet {
+  @include small-screen {
     margin:65px 0 0 0;
     max-height:0;
     overflow:hidden;
@@ -265,7 +281,7 @@ nav ul {
   margin:0;
   list-style:none;
   
-   @include tablet {
+   @include small-screen {
       margin:0;
       padding:0;
     } 
@@ -274,7 +290,7 @@ nav ul {
     float:left;
     position:relative;
     
-    @include tablet {
+    @include small-screen {
       float:none;
       position:relative;
       margin:0;
@@ -294,7 +310,7 @@ nav ul {
         @include transition-duration(0.5s);
       }
 
-      @include tablet {
+      @include small-screen {
         display:table;
         margin:0;
         padding:15px 2px;
@@ -330,7 +346,7 @@ MOBILE NAV STYLES
   line-height:0;
   font-size: 35px;
   
-  @include tablet {
+  @include small-screen {
     display:table;
   }
 }
@@ -386,11 +402,11 @@ html>body .landing {
     font-weight: bold;
     @include font-size(39px);
     margin-top: 100px;
-    @include tablet {
+    @include small-screen {
         @include font-size(29px);
     }
   }
-  @include tablet {
+  @include small-screen {
     .column-8 {
       width: 100%;
     }
@@ -412,16 +428,38 @@ section#content {
     @include font-size(24px);
     color: $text;
     display: block;
+    @include small-screen {
+      @include font-size(17px);
+      height: 48px;
+      line-height: 50px;
+      width: 80%;
+    }
+  }
+  @include small-screen {
+    margin-top: -48px;
   }
 }
 
 .services {
-
+  overflow: hidden;
   .item {
     padding: 40px;
     min-height: 265px;
     background: #fff;
-
+    cursor: pointer;
+    background-position: 0 0;
+    -webkit-transition: background 0.2s;
+          transition: background 0.2s;
+    @include small-screen {
+      min-height: 164px;
+    }
+    &:hover {
+      background: $blue;
+      background-position: 0 -265px;
+      a h2 {
+        color: #fff;
+      }
+    }
     a h2 {
       color: $text;
       @include font-size(19px);
@@ -451,24 +489,30 @@ section#content {
   .side-border {
       position: relative;
       &::before {
-      position: absolute;
-      content: "";
-      display: block;
-      height: 45px;
-      width: 1px;
-      background: $grey;
-      left: 0;
-      top: 0;
-    }
+        position: absolute;
+        content: "";
+        display: block;
+        height: 45px;
+        width: 1px;
+        background: $grey;
+        left: 0;
+        top: 0;
+      }
       &::after {
-      position: absolute;
-      content: "";
-      display: block;
-      height: 45px;
-      width: 1px;
-      background: $grey;
-      left: 0;
-      bottom: 0;
+        position: absolute;
+        content: "";
+        display: block;
+        height: 45px;
+        width: 1px;
+        background: $grey;
+        left: 0;
+        bottom: 0;
+      }
+    &:hover::before {
+      display: none;
+    }
+    &:hover::after {
+      display: none;
     }
   }
 
@@ -484,6 +528,9 @@ section#content {
       right: 0;
       top: 0;
     }
+    &:hover::after {
+      display: none;
+    }
   }
 
   .left-line-border {
@@ -497,6 +544,18 @@ section#content {
       background: $grey;
       left: 0;
       top: 0;
+    }
+    &:hover::before {
+      display: none;
+    }
+  }
+
+  @include small-screen {
+    .column-4 {
+      width: 50%;
+    }
+    .column-8 {
+      width: 100%;
     }
   }
 }
@@ -527,9 +586,17 @@ section.news {
   h2 {
     @include font-size(28px);
     color: $text;
+    @include small-screen {
+      @include font-size(22px);
+    }
   }
   .news-slider {
     margin: 30px -4px;
+    @include small-screen {
+      .column-4 {
+        width: 100%;
+      }
+    }
   }
   .item {
     margin: 0 0px;
@@ -558,6 +625,7 @@ section.news {
       }
       span, span a {
         color: $blue;
+        letter-spacing: 1px;
       }
     }
   }
