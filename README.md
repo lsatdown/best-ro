@@ -21,6 +21,8 @@ Overall the design is quite clean and simple and I don't think it requires any e
 
 1. There's not much going on at the moment but my I've added a few animation/transition to make general interaction a bit more responsive. The services grid looks great as it is but I feel that on hover, a slide-in information block could be useful. Perhaps something that encourage clicking on a particular item.
 
+2. I'm not sure if the hero/splash section was meant to be full screen but I've made it so anyway as I think it produces a more modern and cleaner outcome. I'm not too keen on the on about above the fold and under the fold, I don't think it matters nowadays, plus the header section of the services section is visible anyway.
+
 
 
 
@@ -32,5 +34,5 @@ Overall the design is quite clean and simple and I don't think it requires any e
 
 3. I'm using mixin to run media-queries and adding them to classes as needed instead of a seperate stylesheet. I feel that given the size of the project it's more efficient this way.
 
-4. The Articles and News section is being turned into a slider on screen narrower that 1024px. I'm using Slick Carousel to achieve it. I find it to be the best solution in this case since it has a "destroy" function which allows me to simply load the page without any slider and activate/deactivate it when needed depending on screen size.
+4. The Articles and News section is being turned into a slider on screen narrower that 1024px. I'm using Slick Carousel to achieve it. I find it to be the best solution in this case since it has a "destroy" function which allows me to simply load the page without any slider and activate/deactivate it when needed depending on screen size. It's got swipe to slide functionality built in as well, which means no extra tweaking to make it work on touch screens.
 
