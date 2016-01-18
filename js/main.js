@@ -3,7 +3,7 @@ $(document).ready(function() {
 		$('nav').toggleClass('active'); 
 	});
 
-	if ( $(window).width() < 768 ) {
+	if ( $(window).width() < 1024 ) {
 			$('.news-slider').slick({
 			  	dots:true
 			  });
@@ -13,7 +13,7 @@ $(document).ready(function() {
 });
 
 $(window).resize( function () {
-		if ( $(window).width() < 768 ) {
+		if ( $(window).width() < 1024 ) {
 			$('.news-slider').slick({
 			  	dots:true
 			  });
