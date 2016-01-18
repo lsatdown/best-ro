@@ -15,6 +15,17 @@ module.exports = function(grunt) {
             } 
         },
 
+        imagemin: {
+            dynamic: {
+                files: [{
+                    expand: true,
+                    cwd: 'images/',
+                    src: ['**/*.{png,jpg,gif}'],
+                    dest: 'images'
+                }]
+            }
+        },
+
         watch: {
 
             css: {
@@ -30,9 +41,10 @@ module.exports = function(grunt) {
 
     // 3. Where we tell Grunt we plan to use this plug-in.
     grunt.loadNpmTasks('grunt-contrib-sass');
+    grunt.loadNpmTasks('grunt-contrib-imagemin');
     grunt.loadNpmTasks('grunt-contrib-watch');
 
     // 4. Where we tell Grunt what to do when we type "grunt" into the terminal.
-    grunt.registerTask('default', ['sass', 'watch']);
+    grunt.registerTask('default', ['sass', 'imagemin', 'watch']);
 
 };
