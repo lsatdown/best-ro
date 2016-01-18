@@ -7,7 +7,7 @@ $darkgrey: #585E68;
 $blue: #0DA2D8;
 $darkblue: #2D3643;
 $text: #3C3C3B;
-$font-stack: "Univers LT W01_45 Light1475944", helvetica neue, helvetica, sans-serif;
+$type: "Univers LT W01_45 Light1475944", helvetica neue, helvetica, sans-serif;
 $link-color: #fff;
 $link-hover: #0DA2D8;
 $link-vertical-padding: 12px;
@@ -152,10 +152,9 @@ img {
 TYPOGRAPHY
 ----------------------------*/
 p, h1, h2, h3, h4, li, a {
-  font-family: $font-stack;
+  font-family: $type;
   -webkit-font-smoothing: antialiased;
-  font-weight: 200;
-
+  font-weight: normal;
   @include font-size(17px);
 }
 
@@ -164,7 +163,7 @@ p {
 }
 
 h1 {
-  font-size: 40px;
+  @include font-size(40px);
   margin: 0 0 30px 0;
 }
 
@@ -223,15 +222,11 @@ Button
   &:hover {
     background: darken($menu-background, 10%);
     color: $link-hover;
-
     @include transition-duration(0.5s);
-
     border: 1px solid $blue;
-
     &::before {
       color: $link-hover;
     }
-
     &::after {
       background: $blue;
     }
