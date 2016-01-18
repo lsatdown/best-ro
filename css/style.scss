@@ -41,8 +41,8 @@ $breakpoint-medium: "only screen and (max-width: 1100px)";
 }
 
 @mixin svg-bg($name) {
-  background: url("../../images/#{$name}.png") transparent 0 0 no-repeat;
   background: url("../../images/#{$name}.svg") 0 0 no-repeat;
+  background: url("../../images/#{$name}.png") transparent 0 0 no-repeat;
 }
 
 @mixin centered {
@@ -374,6 +374,7 @@ MOBILE NAV STYLES
   height: 27px;
   width: 24px;
   text-indent: -9999px;
+  outline: none;
   @include svg-bg("menu-icon");
   @include small-screen {
     display: block;
