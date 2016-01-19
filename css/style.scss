@@ -706,11 +706,17 @@ section.news {
       }
     }
   }
-
   .item {
     margin: 0 0px;
     padding: 0 4px;
-
+    -moz-transition: all 0.3s;
+    -webkit-transition: all 0.3s;
+    transition: all 0.3s;
+    &:hover .img img {
+      -moz-transform: scale(1.2);
+      -webkit-transform: scale(1.2);
+      transform: scale(1.2);
+    }
     .inner {
       background: $darkblue;
       min-height: 400px;
@@ -720,16 +726,22 @@ section.news {
       margin: 0;
       padding: 0 5%;
       color: #fff;
-
       @include font-size(14px);
-
       height: 40px;
       line-height: 40px;
+      &:hover {
+        color:$blue;
+      }
     }
 
     .img {
       height: 186px;
       overflow: hidden;
+      img {
+        -moz-transition: all 0.3s;
+        -webkit-transition: all 0.3s;
+        transition: all 0.3s;
+      }
     }
 
     .text {
